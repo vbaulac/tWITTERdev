@@ -1,0 +1,46 @@
+const User = require('../database/models/user.model');
+
+exports.createUser = async (user) => {
+  try {
+    const hashedPassword = await User.hashPassword(user.password);
+    const newUser = new User({
+      username: user.username,
+      local: {
+        email: user.email,
+        password: hashedPassword
+      }
+    });
+    
+    return newUser.save();
+  } catch (error) {
+    throw error;    
+  }
+}
+
+exports.createGoogleUser = async (user) => {
+  try {
+    const newUser = new User({
+      username: user.displayName,
+      local: {
+        email: user.email,
+        googleId: user.id
+      }
+    });
+
+    return newUser.save();
+  } catch (error) {
+    throw error;
+  }
+}
+
+exports.findUserPerEmail = (email) => {
+  return User.findOne({ 'local.email': email }).exec();
+}
+
+exports.findUserPerId = (id) => {
+  return User.findById(id).exec();
+}
+
+exports.findUserPerGoogleId = (googleId) => {
+  return User.findOne({ 'local.googleId': googleId }).exec();
+}

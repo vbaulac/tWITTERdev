@@ -1,0 +1,17 @@
+navbar(class="navbar navbar-expand-lg navbar-light bg-light")
+  a(class="navbar-brand" href="/tweets")
+    img(width="30" height="30" src="/images/carrot.jpg")
+  button(class="navbar-toggler")
+    span(class="navbar-toggler-icon")
+  div(class="collapse navbar-collapse")
+    ul(class="navbar-nav ml-auto")
+      if isAuthenticated
+        li(class="nav-item active")
+          a(class="btn btn-primary mr-3 btn-tweet" href="/tweets/new")= 'Tweet (' + currentUser.username + ')'
+        li(class="nav-item")
+          a(class="nav-link" href="/auth/logout") Logout
+      else
+        li(class="nav-item")
+          a(class="nav-link" href="/users/signup/form") Inscription    
+        li(class="nav-item")
+          a(class="nav-link" href="/auth/signin/form") Connection                

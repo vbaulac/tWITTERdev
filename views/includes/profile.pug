@@ -1,1 +1,16 @@
-//- p profile
+div(class="profile-container mr-3 bg-white d-flex flex-column")
+  div(class="d-flex flex-row justify-content-center align-items-center")
+    img(src="/images/carrot.jpg" class="img-fluid")
+  div(class="d-flex flex-row justify-content-center align-items-center my-3")
+    p= `${currentUser.username} (${currentUser.local.email})`
+  div(class="text-center d-flex flex-row justify-content-center align-items-center my-3")
+    div(class="flex-fill")
+      p
+        strong Tweet
+        br
+        span(class="text-primary")= tweets.length 
+    div(class="flex-fill")
+      p
+        strong Following
+        br
+        span(class="text-primary") -

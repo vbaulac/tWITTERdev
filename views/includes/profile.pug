@@ -1,6 +1,9 @@
+script(src="javascripts/profile.js")
+
 div(class="profile-container mr-3 bg-white d-flex flex-column")
-  div(class="d-flex flex-row justify-content-center align-items-center")
-    img(src="/images/carrot.jpg" class="img-fluid")
+  form(class="d-flex flex-row justify-content-center align-items-center" action="/users/update/image" method="post" enctype="multipart/form-data" id="image-form")
+    input(type="file" name="avatar" class="d-none" id="image-input")
+    img(src=currentUser.profile class="img-fluid" id="image-profile")
   div(class="d-flex flex-row justify-content-center align-items-center my-3")
     p= `${currentUser.username} (${currentUser.local.email})`
   div(class="text-center d-flex flex-row justify-content-center align-items-center my-3")

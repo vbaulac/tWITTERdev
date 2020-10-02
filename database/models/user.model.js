@@ -8,7 +8,8 @@ const userSchema = schema({
     email: { type: String, required: true, unique: true },
     password: { type: String },
     googleId: { type: String }
-  }
+  },
+  profile: { type: String, default: '/images/carrot.jpg'}
 });
 
 userSchema.statics.hashPassword = (password) => {
